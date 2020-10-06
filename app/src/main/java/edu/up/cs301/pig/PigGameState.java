@@ -17,7 +17,7 @@ public class PigGameState extends GameState {
         diceValue = 0;
     }
 
-    public PigGameState (PigGameState pigGameState) {
+    public PigGameState(PigGameState pigGameState) {
         PigGameState instance = new PigGameState();
         this.turn = pigGameState.turn;
         this.p1Score = pigGameState.p1Score;
@@ -26,43 +26,43 @@ public class PigGameState extends GameState {
         this.diceValue = pigGameState.diceValue;
     }
 
-    private int getTurn() {
+    public int getTurn() {
         return this.turn;
     }
 
-    private int getP1Score() {
+    public int getP1Score() {
         return this.p1Score;
     }
 
-    private int getP2Score() {
+    public int getP2Score() {
         return this.p2Score;
     }
 
-    private int getRunningTotal() {
+    public int getRunningTotal() {
         return this.runningTotal;
     }
 
-    private int getDiceValue() {
+    public int getDiceValue() {
         return this.diceValue;
     }
 
-    private void setTurn(int turn) {
+    public void setTurn(int turn) {
         this.turn = turn;
     }
 
-    private void setP1Score(int p1Score) {
+    public void setP1Score(int p1Score) {
         this.p1Score = p1Score;
     }
 
-    private void setP2Score(int p2Score) {
+    public void setP2Score(int p2Score) {
         this.p2Score = p2Score;
     }
 
-    private void setRunningTotal(int runningTotal) {
+    public void setRunningTotal(int runningTotal) {
         this.runningTotal = runningTotal;
     }
 
-    private void setDiceValue(int diceValue) {
+    public void setDiceValue(int diceValue) {
         this.diceValue = diceValue;
     }
 }

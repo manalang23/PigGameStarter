@@ -17,14 +17,13 @@ public class PigGameState extends GameState {
         diceValue = 0;
     }
 
-    private PigGameState copy(PigGameState pigGameState) {
+    public PigGameState (PigGameState pigGameState) {
         PigGameState instance = new PigGameState();
-        instance.turn = pigGameState.turn;
-        instance.p1Score = pigGameState.p1Score;
-        instance.p2Score = pigGameState.p2Score;
-        instance.runningTotal = pigGameState.runningTotal;
-        instance.diceValue = pigGameState.diceValue;
-        return instance;
+        this.turn = pigGameState.turn;
+        this.p1Score = pigGameState.p1Score;
+        this.p2Score = pigGameState.p2Score;
+        this.runningTotal = pigGameState.runningTotal;
+        this.diceValue = pigGameState.diceValue;
     }
 
     private int getTurn() {

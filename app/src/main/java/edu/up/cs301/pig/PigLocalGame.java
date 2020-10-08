@@ -9,6 +9,7 @@ import java.util.Random;
 import android.util.Log;
 
 // dummy comment, to see if commit and push work from srvegdahl account
+// test to see if commit and push work -lindsey
 
 /**
  * class PigLocalGame controls the play of the game

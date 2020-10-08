@@ -25,7 +25,6 @@ public class PigLocalGame extends LocalGame {
      * This ctor creates a new game state
      */
     public PigLocalGame() {
-        //TODO  You will implement this constructor
         official = new PigGameState();
     }
 
@@ -34,12 +33,7 @@ public class PigLocalGame extends LocalGame {
      */
     @Override
     protected boolean canMove(int playerIdx) {
-        //TODO  You will implement this method
-        if (official.getTurn() == playerIdx) {
-            return true;
-        } else {
-            return false;
-        }
+        return official.getTurn() == playerIdx;
     }
 
     /**
@@ -52,8 +46,10 @@ public class PigLocalGame extends LocalGame {
         if (action instanceof PigHoldAction) {
             if (official.getTurn() == 1) {
                 official.setP1Score(official.getP1Score() + official.getRunningTotal());
-                official.setTurn(0);
-            } else {
+                if (this.players.length > 1) {
+                    official.setTurn(2);
+                }
+            } else { // if player 2's turn
                 official.setP2Score(official.getP2Score() + official.getRunningTotal());
                 official.setTurn(1);
             }
@@ -69,14 +65,15 @@ public class PigLocalGame extends LocalGame {
             } else {
                 official.setRunningTotal(0);
                 if (official.getTurn() == 1) {
-                    official.setTurn(0);
-                } else {
+                    if (this.players.length > 1) {
+                        official.setTurn(2);
+                    }
+                } else { // if player 2's turn
                     official.setTurn(1);
                 }
                 return true;
             }
         }
-        //TODO  You will implement this method
         return false;
     }//makeMove
 
@@ -85,7 +82,6 @@ public class PigLocalGame extends LocalGame {
      */
     @Override
     protected void sendUpdatedStateTo(GamePlayer p) {
-        //TODO  You will implement this method
         PigGameState copy = new PigGameState(official);
         p.sendInfo(copy);
     }//sendUpdatedSate
@@ -99,14 +95,13 @@ public class PigLocalGame extends LocalGame {
      */
     @Override
     protected String checkIfGameOver() {
-        if(official.getP1Score() > 50) {
-            return ("Player 1 wins with a score of "+ official.getP1Score());
+        if(official.getP1Score() >= 50) {
+            return (this.playerNames[0] + " wins with a score of " + official.getP1Score());
         }
-        if (official.getP2Score() > 50) {
-            return ("Player 2 wins with a score of "+ official.getP2Score());
+        if (official.getP2Score() >= 50) {
+            return (this.playerNames[1] + " wins with a score of " + official.getP2Score());
         }
         return null;
-        //TODO  You will implement this method
     }
 
 }// class PigLocalGame
